@@ -1,0 +1,4066 @@
+{
+  "initialize_result": {
+    "protocolVersion": "2025-06-18",
+    "capabilities": {
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      }
+    },
+    "serverInfo": {
+      "name": "plugin-runtime",
+      "version": "0.1.0"
+    }
+  },
+  "tools": [
+    {
+      "name": "linear.get_attachment",
+      "title": "Linear_get_attachment",
+      "description": "Retrieve an attachment's content by ID.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Attachment ID"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_attachment",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_attachment",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.create_attachment",
+      "title": "Linear_create_attachment",
+      "description": "Create a new attachment on a specific Linear issue by uploading base64-encoded content.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "issue": {
+            "type": "string",
+            "description": "Issue ID or identifier (e.g., LIN-123)"
+          },
+          "base64Content": {
+            "type": "string",
+            "description": "Base64-encoded file content to upload"
+          },
+          "filename": {
+            "type": "string",
+            "description": "Filename for the upload (e.g., 'screenshot.png')"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "MIME type for the upload (e.g., 'image/png', 'application/pdf')"
+          },
+          "title": {
+            "description": "Optional title for the attachment",
+            "type": "string"
+          },
+          "subtitle": {
+            "description": "Optional subtitle for the attachment",
+            "type": "string"
+          }
+        },
+        "required": [
+          "issue",
+          "base64Content",
+          "filename",
+          "contentType"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.create_attachment",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/create_attachment",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.delete_attachment",
+      "title": "Linear_delete_attachment",
+      "description": "Delete an attachment by ID",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Attachment ID"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.delete_attachment",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/delete_attachment",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_comments",
+      "title": "Linear_list_comments",
+      "description": "List comments for a specific Linear issue",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "issueId": {
+            "type": "string",
+            "description": "Issue ID or identifier (e.g., LIN-123)"
+          }
+        },
+        "required": [
+          "issueId"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_comments",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_comments",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_comment",
+      "title": "Linear_save_comment",
+      "description": "Create or update a comment on a Linear issue. If `id` is provided, updates the existing comment; otherwise creates a new one. When creating, `issueId` and `body` are required.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Comment ID. If provided, updates the existing comment",
+            "type": "string"
+          },
+          "issueId": {
+            "description": "Issue ID or identifier (e.g., LIN-123) (required when creating)",
+            "type": "string"
+          },
+          "parentId": {
+            "description": "Parent comment ID (for replies, only when creating)",
+            "type": "string"
+          },
+          "body": {
+            "type": "string",
+            "description": "Content as Markdown. Do not escape the string — use literal newlines and special characters, not escape sequences. To mention a user, use @displayName (e.g., @johndoe)"
+          }
+        },
+        "required": [
+          "body"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_comment",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_comment",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.delete_comment",
+      "title": "Linear_delete_comment",
+      "description": "Delete a comment from a Linear issue",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Comment ID"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.delete_comment",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/delete_comment",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_cycles",
+      "title": "Linear_list_cycles",
+      "description": "Retrieve cycles for a specific Linear team",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "teamId": {
+            "type": "string",
+            "description": "Team ID"
+          },
+          "type": {
+            "description": "Filter: current, previous, next, or all",
+            "type": "string",
+            "enum": [
+              "current",
+              "previous",
+              "next"
+            ]
+          }
+        },
+        "required": [
+          "teamId"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_cycles",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_cycles",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_document",
+      "title": "Linear_get_document",
+      "description": "Retrieve a Linear document by ID or slug",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Document ID or slug"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_document",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_document",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_documents",
+      "title": "Linear_list_documents",
+      "description": "List documents in the user's Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Search query",
+            "type": "string"
+          },
+          "projectId": {
+            "description": "Filter by project ID",
+            "type": "string"
+          },
+          "initiativeId": {
+            "description": "Filter by initiative ID",
+            "type": "string"
+          },
+          "creatorId": {
+            "description": "Filter by creator ID",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_documents",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_documents",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_document",
+      "title": "Linear_save_document",
+      "description": "Create or update a Linear document. If `id` is provided, updates the existing document; otherwise creates a new one. When creating, `title` is required and exactly one of `project` or `issue` must be specified. On update, passing `project` or `issue` reparents the document (at most one may be supplied).",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Only for updating an existing document. Pass the document ID or slug. Do NOT pass this parameter when creating a new document.",
+            "type": "string"
+          },
+          "title": {
+            "description": "Document title (required when creating)",
+            "type": "string"
+          },
+          "content": {
+            "description": "Content as Markdown. Do not escape the string — use literal newlines and special characters, not escape sequences. To mention a user, use @displayName (e.g., @johndoe)",
+            "type": "string"
+          },
+          "project": {
+            "description": "Project name, ID, or slug (required when creating unless `issue` is set; on update, moves the document to this project)",
+            "type": "string"
+          },
+          "issue": {
+            "description": "Issue ID or identifier (e.g., LIN-123) (required when creating unless `project` is set; on update, moves the document to this issue)",
+            "type": "string"
+          },
+          "icon": {
+            "description": "Icon emoji",
+            "type": "string"
+          },
+          "color": {
+            "description": "Hex color",
+            "type": "string"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_document",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_document",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.extract_images",
+      "title": "Linear_extract_images",
+      "description": "Extract and fetch images from markdown content. Use this to view screenshots, diagrams, or other images embedded in Linear issues, comments, or documents. Pass the markdown content (e.g., issue description) and receive the images as viewable data.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "markdown": {
+            "type": "string",
+            "description": "Markdown content containing image references (e.g., issue description, comment body)"
+          }
+        },
+        "required": [
+          "markdown"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.extract_images",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/extract_images",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_issue",
+      "title": "Linear_get_issue",
+      "description": "Retrieve detailed information about an issue by ID, including attachments and git branch name",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Issue ID or identifier (e.g., LIN-123)"
+          },
+          "includeRelations": {
+            "default": false,
+            "description": "Include blocking/related/duplicate relations",
+            "type": "boolean"
+          },
+          "includeCustomerNeeds": {
+            "default": false,
+            "description": "Include associated customer needs",
+            "type": "boolean"
+          },
+          "includeReleases": {
+            "default": false,
+            "description": "Include associated releases",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_issue",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_issue",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_issues",
+      "title": "Linear_list_issues",
+      "description": "List issues in the user's Linear workspace. For my issues, use \"me\" as the assignee. Use \"null\" for no assignee.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Search issue title or description",
+            "type": "string"
+          },
+          "team": {
+            "description": "Team name or ID",
+            "type": "string"
+          },
+          "state": {
+            "description": "State type, name, or ID",
+            "type": "string"
+          },
+          "cycle": {
+            "description": "Cycle name, number, or ID",
+            "type": "string"
+          },
+          "label": {
+            "description": "Label name or ID",
+            "type": "string"
+          },
+          "assignee": {
+            "description": "User ID, name, email, or \"me\"",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "delegate": {
+            "description": "Agent name or ID. When the user asks to delegate to \"Linear\" or \"the Linear agent\", this refers to the \"Linear\" app user specifically",
+            "type": "string"
+          },
+          "project": {
+            "description": "Project name, ID, or slug",
+            "type": "string"
+          },
+          "priority": {
+            "description": "0=None, 1=Urgent, 2=High, 3=Normal, 4=Low",
+            "type": "number"
+          },
+          "parentId": {
+            "description": "Parent issue ID or identifier (e.g., LIN-123)",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "includeArchived": {
+            "default": true,
+            "description": "Include archived items",
+            "type": "boolean"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_issues",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_issues",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_issue",
+      "title": "Linear_save_issue",
+      "description": "Create or update a Linear issue. If `id` is provided, updates the existing issue; otherwise creates a new one. When creating, `title` and `team` are required. Note: use `assignee` (not `assigneeId`) to set the assignee — it accepts a user ID, name, email, or \"me\".",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Only for updating an existing issue. Pass the issue ID or identifier (e.g., LIN-123). Do NOT pass this parameter when creating a new issue.",
+            "type": "string"
+          },
+          "title": {
+            "description": "Issue title (required when creating)",
+            "type": "string"
+          },
+          "description": {
+            "description": "Content as Markdown. Do not escape the string — use literal newlines and special characters, not escape sequences. To mention a user, use @displayName (e.g., @johndoe)",
+            "type": "string"
+          },
+          "team": {
+            "description": "Team name or ID (required when creating)",
+            "type": "string"
+          },
+          "cycle": {
+            "description": "Cycle name, number, or ID",
+            "type": "string"
+          },
+          "milestone": {
+            "description": "Milestone name or ID",
+            "type": "string"
+          },
+          "priority": {
+            "description": "0=None, 1=Urgent, 2=High, 3=Normal, 4=Low",
+            "type": "number"
+          },
+          "project": {
+            "description": "Project name, ID, or slug",
+            "type": "string"
+          },
+          "state": {
+            "description": "State type, name, or ID",
+            "type": "string"
+          },
+          "assignee": {
+            "description": "User ID, name, email, or \"me\". Null to remove",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "delegate": {
+            "description": "Agent name or ID. When the user asks to delegate to \"Linear\" or \"the Linear agent\", this refers to the \"Linear\" app user specifically. Null to remove",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "labels": {
+            "description": "Label names or IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dueDate": {
+            "description": "Due date (ISO format)",
+            "type": "string"
+          },
+          "parentId": {
+            "description": "Parent issue ID or identifier (e.g., LIN-123). Null to remove",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "estimate": {
+            "description": "Issue estimate value",
+            "type": "number"
+          },
+          "links": {
+            "description": "Link attachments to add [{url, title}]. Append-only; existing links are never removed",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "url",
+                "title"
+              ]
+            }
+          },
+          "blocks": {
+            "description": "Issue IDs/identifiers this blocks. Append-only; existing relations are never removed",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "blockedBy": {
+            "description": "Issue IDs/identifiers blocking this. Append-only; existing relations are never removed",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relatedTo": {
+            "description": "Related issue IDs/identifiers. Append-only; existing relations are never removed",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "duplicateOf": {
+            "description": "Duplicate of issue ID/identifier. Null to remove",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "removeBlocks": {
+            "description": "Issue IDs/identifiers to stop blocking",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "removeBlockedBy": {
+            "description": "Issue IDs/identifiers to remove as blockers of this issue",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "removeRelatedTo": {
+            "description": "Related issue IDs/identifiers to remove",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_issue",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_issue",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_issue_statuses",
+      "title": "Linear_list_issue_statuses",
+      "description": "List available issue statuses in a Linear team",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "team": {
+            "type": "string",
+            "description": "Team name or ID"
+          }
+        },
+        "required": [
+          "team"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_issue_statuses",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_issue_statuses",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_issue_status",
+      "title": "Linear_get_issue_status",
+      "description": "Retrieve detailed information about an issue status in Linear by name or ID",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Status ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Status name"
+          },
+          "team": {
+            "type": "string",
+            "description": "Team name or ID"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "team"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_issue_status",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_issue_status",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_issue_labels",
+      "title": "Linear_list_issue_labels",
+      "description": "List available issue labels in a Linear workspace or team",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "name": {
+            "description": "Filter by name",
+            "type": "string"
+          },
+          "team": {
+            "description": "Team name or ID",
+            "type": "string"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_issue_labels",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_issue_labels",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.create_issue_label",
+      "title": "Linear_create_issue_label",
+      "description": "Create a new Linear issue label",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Label name"
+          },
+          "description": {
+            "description": "Label description",
+            "type": "string"
+          },
+          "color": {
+            "description": "Hex color code",
+            "type": "string"
+          },
+          "teamId": {
+            "description": "Team UUID (omit for workspace label)",
+            "type": "string"
+          },
+          "parent": {
+            "description": "Parent label group name",
+            "type": "string"
+          },
+          "isGroup": {
+            "default": false,
+            "description": "Is label group (not directly applicable)",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.create_issue_label",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/create_issue_label",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_projects",
+      "title": "Linear_list_projects",
+      "description": "List projects in the user's Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Search project name",
+            "type": "string"
+          },
+          "state": {
+            "description": "State type, name, or ID",
+            "type": "string"
+          },
+          "initiative": {
+            "description": "Initiative name or ID",
+            "type": "string"
+          },
+          "team": {
+            "description": "Team name or ID",
+            "type": "string"
+          },
+          "member": {
+            "description": "User ID, name, email, or \"me\"",
+            "type": "string"
+          },
+          "label": {
+            "description": "Label name or ID",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "includeMilestones": {
+            "default": false,
+            "description": "Include milestones",
+            "type": "boolean"
+          },
+          "includeMembers": {
+            "default": false,
+            "description": "Include project members",
+            "type": "boolean"
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_projects",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_projects",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_project",
+      "title": "Linear_get_project",
+      "description": "Retrieve details of a specific project in Linear",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Project name, ID, or slug"
+          },
+          "includeMilestones": {
+            "default": false,
+            "description": "Include milestones",
+            "type": "boolean"
+          },
+          "includeMembers": {
+            "default": false,
+            "description": "Include project members",
+            "type": "boolean"
+          },
+          "includeResources": {
+            "default": false,
+            "description": "Include resources (documents, links, attachments)",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_project",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_project",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_project",
+      "title": "Linear_save_project",
+      "description": "Create or update a Linear project. If `id` is provided, updates the existing project; otherwise creates a new one. When creating, `name` and at least one team (via `addTeams` or `setTeams`) are required.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Project ID. If provided, updates the existing project",
+            "type": "string"
+          },
+          "name": {
+            "description": "Project name (required when creating)",
+            "type": "string"
+          },
+          "icon": {
+            "description": "Icon emoji (e.g., :eagle:)",
+            "type": "string"
+          },
+          "color": {
+            "description": "Hex color",
+            "type": "string"
+          },
+          "summary": {
+            "description": "Short summary (max 255 chars)",
+            "type": "string"
+          },
+          "description": {
+            "description": "Content as Markdown. Do not escape the string — use literal newlines and special characters, not escape sequences. To mention a user, use @displayName (e.g., @johndoe)",
+            "type": "string"
+          },
+          "state": {
+            "description": "Project state",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "Start date (ISO format). Pair with startDateResolution to indicate precision (e.g. month, quarter)",
+            "type": "string"
+          },
+          "startDateResolution": {
+            "description": "Start date resolution",
+            "type": "string",
+            "enum": [
+              "halfYear",
+              "month",
+              "quarter",
+              "year"
+            ]
+          },
+          "targetDate": {
+            "description": "Target date (ISO format). Pair with targetDateResolution to indicate precision (e.g. month, quarter)",
+            "type": "string"
+          },
+          "targetDateResolution": {
+            "description": "Target date resolution",
+            "type": "string",
+            "enum": [
+              "halfYear",
+              "month",
+              "quarter",
+              "year"
+            ]
+          },
+          "priority": {
+            "description": "0=None, 1=Urgent, 2=High, 3=Medium, 4=Low",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "addTeams": {
+            "description": "Team name or ID to add",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "removeTeams": {
+            "description": "Team name or ID to remove",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "setTeams": {
+            "description": "Replace all teams with these. Cannot combine with addTeams/removeTeams",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "labels": {
+            "description": "Label names or IDs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lead": {
+            "description": "User ID, name, email, or \"me\". Null to remove",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "addInitiatives": {
+            "description": "Initiative names/IDs to add",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "removeInitiatives": {
+            "description": "Initiative names/IDs to remove",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "setInitiatives": {
+            "description": "Replace all initiatives with these. Cannot combine with addInitiatives/removeInitiatives",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_project",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_project",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_project_labels",
+      "title": "Linear_list_project_labels",
+      "description": "List available project labels in the Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "name": {
+            "description": "Filter by name",
+            "type": "string"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_project_labels",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_project_labels",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_milestones",
+      "title": "Linear_list_milestones",
+      "description": "List all milestones in a Linear project",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "Project name, ID, or slug"
+          }
+        },
+        "required": [
+          "project"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_milestones",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_milestones",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_milestone",
+      "title": "Linear_get_milestone",
+      "description": "Retrieve details of a specific milestone by ID or name",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "Project name, ID, or slug"
+          },
+          "query": {
+            "type": "string",
+            "description": "Milestone name or ID"
+          }
+        },
+        "required": [
+          "project",
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_milestone",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_milestone",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_milestone",
+      "title": "Linear_save_milestone",
+      "description": "Create or update a milestone in a Linear project. If `id` is provided, updates the existing milestone; otherwise creates a new one. When creating, `name` is required.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "project": {
+            "type": "string",
+            "description": "Project name, ID, or slug"
+          },
+          "id": {
+            "description": "Milestone name or ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Milestone name (required when creating)",
+            "type": "string"
+          },
+          "description": {
+            "description": "Milestone description",
+            "type": "string"
+          },
+          "targetDate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Target completion date (ISO format, null to remove)"
+          }
+        },
+        "required": [
+          "project"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_milestone",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_milestone",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_teams",
+      "title": "Linear_list_teams",
+      "description": "List teams in the user's Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Search query",
+            "type": "string"
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_teams",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_teams",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_team",
+      "title": "Linear_get_team",
+      "description": "Retrieve details of a specific Linear team",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Team UUID, key, or name"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_team",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_team",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_users",
+      "title": "Linear_list_users",
+      "description": "Retrieve users in the Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Filter by name or email",
+            "type": "string"
+          },
+          "team": {
+            "description": "Team name or ID",
+            "type": "string"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_users",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_users",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_user",
+      "title": "Linear_get_user",
+      "description": "Retrieve details of a specific Linear user",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "User ID, name, email, or \"me\""
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_user",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_user",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.search_documentation",
+      "title": "Linear_search_documentation",
+      "description": "Search Linear's documentation to learn about features and usage",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query"
+          },
+          "page": {
+            "default": 0,
+            "description": "Page number",
+            "type": "number"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.search_documentation",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/search_documentation",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_customers",
+      "title": "Linear_list_customers",
+      "description": "List customers in the user's Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Search customer name",
+            "type": "string"
+          },
+          "owner": {
+            "description": "User ID, name, email, or \"me\"",
+            "type": "string"
+          },
+          "status": {
+            "description": "Customer status name or ID",
+            "type": "string"
+          },
+          "tier": {
+            "description": "Customer tier name or ID",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          },
+          "includeNeeds": {
+            "default": false,
+            "description": "Include associated customer needs",
+            "type": "boolean"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_customers",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_customers",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_customer",
+      "title": "Linear_save_customer",
+      "description": "Create or update a Linear customer. If `id` is provided, updates the existing customer; otherwise creates a new one. When creating, `name` is required.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Customer ID. If provided, updates the existing customer",
+            "type": "string"
+          },
+          "name": {
+            "description": "Customer name (required when creating)",
+            "type": "string"
+          },
+          "domains": {
+            "description": "Domains to add to this customer. Append-only; existing domains are never removed",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "externalIds": {
+            "description": "External system IDs to add. Append-only; existing IDs are never removed",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "description": "User ID, name, email, or \"me\"",
+            "type": "string"
+          },
+          "status": {
+            "description": "Customer status name or ID",
+            "type": "string"
+          },
+          "tier": {
+            "description": "Customer tier name or ID",
+            "type": "string"
+          },
+          "revenue": {
+            "description": "Annual revenue generated by the customer",
+            "type": "number"
+          },
+          "size": {
+            "description": "Size of the customer organization",
+            "type": "number"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_customer",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_customer",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.delete_customer",
+      "title": "Linear_delete_customer",
+      "description": "Delete a customer in Linear",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Customer ID"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.delete_customer",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/delete_customer",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_customer_need",
+      "title": "Linear_save_customer_need",
+      "description": "Create or update a customer need (request) in Linear. If `id` is provided, updates the existing need; otherwise creates a new one. When creating, `body` is required.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Customer need ID. If provided, updates the existing need",
+            "type": "string"
+          },
+          "body": {
+            "description": "Description of the customer need (required when creating)",
+            "type": "string"
+          },
+          "customer": {
+            "description": "Customer ID or name",
+            "type": "string"
+          },
+          "issue": {
+            "description": "Issue ID or identifier (e.g., LIN-123) to associate with this need",
+            "type": "string"
+          },
+          "project": {
+            "description": "Project ID or name to associate with this need",
+            "type": "string"
+          },
+          "priority": {
+            "description": "Whether the need is important. 0 = Not important, 1 = Important",
+            "type": "number"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_customer_need",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_customer_need",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.delete_customer_need",
+      "title": "Linear_delete_customer_need",
+      "description": "Archive a customer need in Linear",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Customer need ID"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.delete_customer_need",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/delete_customer_need",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.list_initiatives",
+      "title": "Linear_list_initiatives",
+      "description": "List initiatives in the user's Linear workspace",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "query": {
+            "description": "Search initiative name",
+            "type": "string"
+          },
+          "status": {
+            "description": "Status of the initiative",
+            "type": "string"
+          },
+          "owner": {
+            "description": "User ID, name, email, or \"me\"",
+            "type": "string"
+          },
+          "parentInitiative": {
+            "description": "Parent initiative name or ID",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          },
+          "includeProjects": {
+            "default": false,
+            "description": "Include projects",
+            "type": "boolean"
+          },
+          "includeSubInitiatives": {
+            "default": false,
+            "description": "Include sub-initiatives",
+            "type": "boolean"
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.list_initiatives",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/list_initiatives",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_initiative",
+      "title": "Linear_get_initiative",
+      "description": "Retrieve detailed information about a specific initiative in Linear",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Initiative ID or name"
+          },
+          "includeProjects": {
+            "default": false,
+            "description": "Include projects",
+            "type": "boolean"
+          },
+          "includeSubInitiatives": {
+            "default": false,
+            "description": "Include sub-initiatives",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_initiative",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_initiative",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_initiative",
+      "title": "Linear_save_initiative",
+      "description": "Create or update a Linear initiative. If `id` is provided, updates the existing initiative; otherwise creates a new one. When creating, `name` is required.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Initiative ID. If provided, updates the existing initiative",
+            "type": "string"
+          },
+          "name": {
+            "description": "Initiative name (required when creating)",
+            "type": "string"
+          },
+          "summary": {
+            "description": "Short summary (max 255 chars)",
+            "type": "string"
+          },
+          "description": {
+            "description": "Content as Markdown. Do not escape the string — use literal newlines and special characters, not escape sequences. To mention a user, use @displayName (e.g., @johndoe)",
+            "type": "string"
+          },
+          "color": {
+            "description": "Hex color",
+            "type": "string"
+          },
+          "icon": {
+            "description": "Icon emoji or name",
+            "type": "string"
+          },
+          "status": {
+            "description": "Initiative status (Planned, Active, Completed)",
+            "type": "string"
+          },
+          "targetDate": {
+            "description": "Target date (ISO format)",
+            "type": "string"
+          },
+          "owner": {
+            "description": "User ID, name, email, or \"me\". Null to remove",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "parentInitiatives": {
+            "description": "Parent initiative names or IDs to add. Appended to existing parents",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_initiative",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_initiative",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.get_status_updates",
+      "title": "Linear_get_status_updates",
+      "description": "List or get project/initiative status updates. Pass `id` to get a specific update, or filter to list.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "limit": {
+            "default": 50,
+            "description": "Max results (default 50, max 250)",
+            "type": "number",
+            "maximum": 250
+          },
+          "cursor": {
+            "description": "Next page cursor",
+            "type": "string"
+          },
+          "orderBy": {
+            "default": "updatedAt",
+            "description": "Sort: createdAt | updatedAt",
+            "type": "string",
+            "enum": [
+              "createdAt",
+              "updatedAt"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "project",
+              "initiative"
+            ],
+            "description": "Type of status update"
+          },
+          "id": {
+            "description": "Status update ID - if provided, returns this specific update",
+            "type": "string"
+          },
+          "project": {
+            "description": "Project name, ID, or slug",
+            "type": "string"
+          },
+          "initiative": {
+            "description": "Initiative name or ID",
+            "type": "string"
+          },
+          "user": {
+            "description": "User ID, name, email, or \"me\"",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Created after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated after: ISO-8601 date/duration (e.g., -P1D)",
+            "type": "string"
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.get_status_updates",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/get_status_updates",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.save_status_update",
+      "title": "Linear_save_status_update",
+      "description": "Create or update a project/initiative status update. Omit `id` to create, provide `id` to update.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "project",
+              "initiative"
+            ],
+            "description": "Type of status update"
+          },
+          "id": {
+            "description": "Status update ID - if provided, updates this existing update",
+            "type": "string"
+          },
+          "project": {
+            "description": "Project name, ID, or slug",
+            "type": "string"
+          },
+          "initiative": {
+            "description": "Initiative name or ID",
+            "type": "string"
+          },
+          "body": {
+            "description": "Content as Markdown. Do not escape the string — use literal newlines and special characters, not escape sequences. To mention a user, use @displayName (e.g., @johndoe)",
+            "type": "string"
+          },
+          "health": {
+            "description": "onTrack | atRisk | offTrack",
+            "type": "string",
+            "enum": [
+              "onTrack",
+              "atRisk",
+              "offTrack"
+            ]
+          },
+          "isDiffHidden": {
+            "description": "Hide diff with previous update",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.save_status_update",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/save_status_update",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.delete_status_update",
+      "title": "Linear_delete_status_update",
+      "description": "Delete (archive) a project or initiative status update.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "project",
+              "initiative"
+            ],
+            "description": "Type of status update"
+          },
+          "id": {
+            "type": "string",
+            "description": "Status update ID"
+          }
+        },
+        "required": [
+          "type",
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.delete_status_update",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/delete_status_update",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.search",
+      "title": "Linear_search",
+      "description": "Full-text search across Linear issues, projects, initiatives, and documents, ranked by relevance. Use this for keyword or natural-language queries (e.g. \"memory leak in sync engine\"). Supports \"quoted phrases\" for exact match, -term to exclude, and +term to require. For structured filtering by assignee, status, team, label, etc., use the list_issues or list_projects tools instead.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Natural language or keyword search terms (e.g. \"billing webhook failure\"). Supports \"quoted phrases\" for exact match, -term for exclusion, and +term for required terms"
+          },
+          "type": {
+            "default": "all",
+            "description": "Optional entity type filter",
+            "type": "string",
+            "enum": [
+              "all",
+              "issue",
+              "project",
+              "initiative",
+              "document"
+            ]
+          },
+          "limit": {
+            "default": 10,
+            "description": "Max results (default 10, max 50)",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "includeArchived": {
+            "default": false,
+            "description": "Include archived items",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.search",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/search",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "linear.fetch",
+      "title": "Linear_fetch",
+      "description": "Fetch a Linear issue, project, initiative, or document by entity-prefixed ID. Use to get full details for results returned by the search tool. Also works with any known identifier.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Entity-prefixed ID returned by `search`, like `issue:LIN-123`"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {},
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "resource_name": "linear.fetch",
+        "_codex_apps": {
+          "resource_uri": "/asdk_app_69a089a326dc8191b32a3f2553f5be2c/link_6a1da85287f8819184dfa7ab94e3c249/fetch",
+          "contains_mcp_source": true
+        },
+        "connector_id": "asdk_app_69a089a326dc8191b32a3f2553f5be2c",
+        "connector_name": "Linear",
+        "connector_description": "Plan and build products",
+        "link_id": "link_6a1da85287f8819184dfa7ab94e3c249"
+      }
+    },
+    {
+      "name": "openai_platform.create_encrypted_openai_api_key",
+      "title": "OpenAI Platform_create_encrypted_openai_api_key",
+      "description": "Create one encrypted OpenAI API key for the connected Platform account. Only call this from a trusted setup flow after generating a 4096-bit RSA public JWK locally, such as the API key setup widget or Codex key setup skill. The raw API key is never returned in tool output.",
+      "inputSchema": {
+        "properties": {
+          "recipient_public_key_jwk": {
+            "additionalProperties": true,
+            "description": "RSA public JWK containing exactly the public key material needed to encrypt the API key: kty, n, and e.",
+            "title": "Recipient Public Key Jwk",
+            "type": "object"
+          },
+          "name": {
+            "default": "Codex",
+            "description": "Name for the new project API key. Keep it short and specific.",
+            "title": "Name",
+            "type": "string"
+          },
+          "organization_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional OpenAI organization id chosen by the trusted setup flow. Pass this together with project_id.",
+            "title": "Organization Id"
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Optional OpenAI project id chosen by the trusted setup flow. Pass this together with organization_id.",
+            "title": "Project Id"
+          }
+        },
+        "required": [
+          "recipient_public_key_jwk"
+        ],
+        "title": "create_encrypted_openai_api_key_input",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "properties": {
+          "result": {
+            "additionalProperties": false,
+            "description": "The server's response to a tool call.",
+            "properties": {
+              "_meta": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Meta"
+              },
+              "content": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "additionalProperties": false,
+                      "description": "Text content for a message.",
+                      "properties": {
+                        "type": {
+                          "const": "text",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "text": {
+                          "title": "Text",
+                          "type": "string"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "text"
+                      ],
+                      "title": "TextContent",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "Image content for a message.",
+                      "properties": {
+                        "type": {
+                          "const": "image",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "data": {
+                          "title": "Data",
+                          "type": "string"
+                        },
+                        "mimeType": {
+                          "title": "Mimetype",
+                          "type": "string"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "data",
+                        "mimeType"
+                      ],
+                      "title": "ImageContent",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "Audio content for a message.",
+                      "properties": {
+                        "type": {
+                          "const": "audio",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "data": {
+                          "title": "Data",
+                          "type": "string"
+                        },
+                        "mimeType": {
+                          "title": "Mimetype",
+                          "type": "string"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "data",
+                        "mimeType"
+                      ],
+                      "title": "AudioContent",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "A resource that the server is capable of reading, included in a prompt or tool call result.\n\nNote: resource links returned by tools are not guaranteed to appear in the results of `resources/list` requests.",
+                      "properties": {
+                        "name": {
+                          "title": "Name",
+                          "type": "string"
+                        },
+                        "title": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Title"
+                        },
+                        "uri": {
+                          "format": "uri",
+                          "minLength": 1,
+                          "title": "Uri",
+                          "type": "string"
+                        },
+                        "description": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Description"
+                        },
+                        "mimeType": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Mimetype"
+                        },
+                        "size": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Size"
+                        },
+                        "icons": {
+                          "anyOf": [
+                            {
+                              "items": {
+                                "additionalProperties": false,
+                                "description": "An icon for display in user interfaces.",
+                                "properties": {
+                                  "src": {
+                                    "title": "Src",
+                                    "type": "string"
+                                  },
+                                  "mimeType": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ],
+                                    "default": null,
+                                    "title": "Mimetype"
+                                  },
+                                  "sizes": {
+                                    "anyOf": [
+                                      {
+                                        "items": {
+                                          "type": "string"
+                                        },
+                                        "type": "array"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ],
+                                    "default": null,
+                                    "title": "Sizes"
+                                  }
+                                },
+                                "required": [
+                                  "src"
+                                ],
+                                "title": "Icon",
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Icons"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        },
+                        "type": {
+                          "const": "resource_link",
+                          "title": "Type",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "uri",
+                        "type"
+                      ],
+                      "title": "ResourceLink",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "The contents of a resource, embedded into a prompt or tool call result.\n\nIt is up to the client how best to render embedded resources for the benefit\nof the LLM and/or the user.",
+                      "properties": {
+                        "type": {
+                          "const": "resource",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "resource": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "description": "Text contents of a resource.",
+                              "properties": {
+                                "uri": {
+                                  "format": "uri",
+                                  "minLength": 1,
+                                  "title": "Uri",
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Mimetype"
+                                },
+                                "_meta": {
+                                  "anyOf": [
+                                    {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Meta"
+                                },
+                                "text": {
+                                  "title": "Text",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "text"
+                              ],
+                              "title": "TextResourceContents",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "description": "Binary contents of a resource.",
+                              "properties": {
+                                "uri": {
+                                  "format": "uri",
+                                  "minLength": 1,
+                                  "title": "Uri",
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Mimetype"
+                                },
+                                "_meta": {
+                                  "anyOf": [
+                                    {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Meta"
+                                },
+                                "blob": {
+                                  "title": "Blob",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "blob"
+                              ],
+                              "title": "BlobResourceContents",
+                              "type": "object"
+                            }
+                          ],
+                          "title": "Resource"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "resource"
+                      ],
+                      "title": "EmbeddedResource",
+                      "type": "object"
+                    }
+                  ]
+                },
+                "title": "Content",
+                "type": "array"
+              },
+              "structuredContent": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Structuredcontent"
+              },
+              "isError": {
+                "default": false,
+                "title": "Iserror",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "title": "CallToolResult",
+            "type": "object"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "create_encrypted_openai_api_key_output",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true
+      },
+      "_meta": {
+        "openai/outputTemplate": null,
+        "resource_name": "openai_platform.create_encrypted_openai_api_key",
+        "_codex_apps": {
+          "resource_uri": "/connector_2de447f3f15448ebab48783d7e4f5d81/link_6a1fdcf2c73c8191b35db1e33092224a/create_encrypted_openai_api_key",
+          "contains_mcp_source": false
+        },
+        "connector_id": "connector_2de447f3f15448ebab48783d7e4f5d81",
+        "connector_name": "OpenAI Platform",
+        "connector_description": "Use OpenAI Platform when the user wants to create, set up, copy, download, or use an OpenAI API key, including OPENAI_API_KEY or sk-proj keys. Also use it when code, commands, docs, or environment setup in the conversation requires an OpenAI API key, even if the user did not explicitly ask to create one. Do not generate key setup instructions inline when this app can be used. In normal ChatGPT chat surfaces, open the secure API key setup flow. In Codex, follow the installed Codex API key setup skill and use create_encrypted_openai_api_key only from a trusted local-write flow.",
+        "link_id": "link_6a1fdcf2c73c8191b35db1e33092224a"
+      }
+    },
+    {
+      "name": "openai_platform.list_openai_api_key_targets",
+      "title": "OpenAI Platform_list_openai_api_key_targets",
+      "description": "Load the OpenAI organizations and projects available as targets for an API key setup widget. The connector-owned widget calls this directly. This may initialize Platform creation targets for the connected account.",
+      "inputSchema": {
+        "properties": {},
+        "title": "list_openai_api_key_targets_input",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "properties": {
+          "result": {
+            "additionalProperties": false,
+            "description": "The server's response to a tool call.",
+            "properties": {
+              "_meta": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Meta"
+              },
+              "content": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "additionalProperties": false,
+                      "description": "Text content for a message.",
+                      "properties": {
+                        "type": {
+                          "const": "text",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "text": {
+                          "title": "Text",
+                          "type": "string"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "text"
+                      ],
+                      "title": "TextContent",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "Image content for a message.",
+                      "properties": {
+                        "type": {
+                          "const": "image",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "data": {
+                          "title": "Data",
+                          "type": "string"
+                        },
+                        "mimeType": {
+                          "title": "Mimetype",
+                          "type": "string"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "data",
+                        "mimeType"
+                      ],
+                      "title": "ImageContent",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "Audio content for a message.",
+                      "properties": {
+                        "type": {
+                          "const": "audio",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "data": {
+                          "title": "Data",
+                          "type": "string"
+                        },
+                        "mimeType": {
+                          "title": "Mimetype",
+                          "type": "string"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "data",
+                        "mimeType"
+                      ],
+                      "title": "AudioContent",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "A resource that the server is capable of reading, included in a prompt or tool call result.\n\nNote: resource links returned by tools are not guaranteed to appear in the results of `resources/list` requests.",
+                      "properties": {
+                        "name": {
+                          "title": "Name",
+                          "type": "string"
+                        },
+                        "title": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Title"
+                        },
+                        "uri": {
+                          "format": "uri",
+                          "minLength": 1,
+                          "title": "Uri",
+                          "type": "string"
+                        },
+                        "description": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Description"
+                        },
+                        "mimeType": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Mimetype"
+                        },
+                        "size": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Size"
+                        },
+                        "icons": {
+                          "anyOf": [
+                            {
+                              "items": {
+                                "additionalProperties": false,
+                                "description": "An icon for display in user interfaces.",
+                                "properties": {
+                                  "src": {
+                                    "title": "Src",
+                                    "type": "string"
+                                  },
+                                  "mimeType": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ],
+                                    "default": null,
+                                    "title": "Mimetype"
+                                  },
+                                  "sizes": {
+                                    "anyOf": [
+                                      {
+                                        "items": {
+                                          "type": "string"
+                                        },
+                                        "type": "array"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ],
+                                    "default": null,
+                                    "title": "Sizes"
+                                  }
+                                },
+                                "required": [
+                                  "src"
+                                ],
+                                "title": "Icon",
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Icons"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        },
+                        "type": {
+                          "const": "resource_link",
+                          "title": "Type",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "uri",
+                        "type"
+                      ],
+                      "title": "ResourceLink",
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "description": "The contents of a resource, embedded into a prompt or tool call result.\n\nIt is up to the client how best to render embedded resources for the benefit\nof the LLM and/or the user.",
+                      "properties": {
+                        "type": {
+                          "const": "resource",
+                          "title": "Type",
+                          "type": "string"
+                        },
+                        "resource": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "description": "Text contents of a resource.",
+                              "properties": {
+                                "uri": {
+                                  "format": "uri",
+                                  "minLength": 1,
+                                  "title": "Uri",
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Mimetype"
+                                },
+                                "_meta": {
+                                  "anyOf": [
+                                    {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Meta"
+                                },
+                                "text": {
+                                  "title": "Text",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "text"
+                              ],
+                              "title": "TextResourceContents",
+                              "type": "object"
+                            },
+                            {
+                              "additionalProperties": false,
+                              "description": "Binary contents of a resource.",
+                              "properties": {
+                                "uri": {
+                                  "format": "uri",
+                                  "minLength": 1,
+                                  "title": "Uri",
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Mimetype"
+                                },
+                                "_meta": {
+                                  "anyOf": [
+                                    {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Meta"
+                                },
+                                "blob": {
+                                  "title": "Blob",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "blob"
+                              ],
+                              "title": "BlobResourceContents",
+                              "type": "object"
+                            }
+                          ],
+                          "title": "Resource"
+                        },
+                        "annotations": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": false,
+                              "properties": {
+                                "audience": {
+                                  "anyOf": [
+                                    {
+                                      "items": {
+                                        "enum": [
+                                          "user",
+                                          "assistant"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Audience"
+                                },
+                                "priority": {
+                                  "anyOf": [
+                                    {
+                                      "maximum": 1.0,
+                                      "minimum": 0.0,
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ],
+                                  "default": null,
+                                  "title": "Priority"
+                                }
+                              },
+                              "title": "Annotations",
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null
+                        },
+                        "_meta": {
+                          "anyOf": [
+                            {
+                              "additionalProperties": true,
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Meta"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "resource"
+                      ],
+                      "title": "EmbeddedResource",
+                      "type": "object"
+                    }
+                  ]
+                },
+                "title": "Content",
+                "type": "array"
+              },
+              "structuredContent": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Structuredcontent"
+              },
+              "isError": {
+                "default": false,
+                "title": "Iserror",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "content"
+            ],
+            "title": "CallToolResult",
+            "type": "object"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "list_openai_api_key_targets_output",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true
+      },
+      "_meta": {
+        "openai/outputTemplate": null,
+        "resource_name": "openai_platform.list_openai_api_key_targets",
+        "_codex_apps": {
+          "resource_uri": "/connector_2de447f3f15448ebab48783d7e4f5d81/link_6a1fdcf2c73c8191b35db1e33092224a/list_openai_api_key_targets",
+          "contains_mcp_source": false
+        },
+        "connector_id": "connector_2de447f3f15448ebab48783d7e4f5d81",
+        "connector_name": "OpenAI Platform",
+        "connector_description": "Use OpenAI Platform when the user wants to create, set up, copy, download, or use an OpenAI API key, including OPENAI_API_KEY or sk-proj keys. Also use it when code, commands, docs, or environment setup in the conversation requires an OpenAI API key, even if the user did not explicitly ask to create one. Do not generate key setup instructions inline when this app can be used. In normal ChatGPT chat surfaces, open the secure API key setup flow. In Codex, follow the installed Codex API key setup skill and use create_encrypted_openai_api_key only from a trusted local-write flow.",
+        "link_id": "link_6a1fdcf2c73c8191b35db1e33092224a"
+      }
+    },
+    {
+      "name": "openai_platform.open_codex_api_key_setup",
+      "title": "OpenAI Platform_open_codex_api_key_setup",
+      "description": "Open the Codex OpenAI API key target-selection flow. Use this from Codex to select the key name and creation target before Codex asks the developer to confirm any local env-file destination. Opening this widget loads selectable organizations and projects directly from OpenAI Platform and may initialize creation targets for the connected account. It returns only the confirmed key name and target ids to Codex; it does not receive local paths or expose a plaintext key.",
+      "inputSchema": {
+        "properties": {
+          "name": {
+            "default": "Codex",
+            "description": "Suggested name for the new project API key.",
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "title": "open_codex_api_key_setup_input",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "properties": {
+          "result": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Result",
+            "type": "object"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "open_codex_api_key_setup_output",
+        "type": "object",
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": true
+      },
+      "_meta": {
+        "openai/outputTemplate": "internal://openai-platform-codex-api-key-setup",
+        "resource_name": "openai_platform.open_codex_api_key_setup",
+        "_codex_apps": {
+          "resource_uri": "/connector_2de447f3f15448ebab48783d7e4f5d81/link_6a1fdcf2c73c8191b35db1e33092224a/open_codex_api_key_setup",
+          "contains_mcp_source": false
+        },
+        "connector_id": "connector_2de447f3f15448ebab48783d7e4f5d81",
+        "connector_name": "OpenAI Platform",
+        "connector_description": "Use OpenAI Platform when the user wants to create, set up, copy, download, or use an OpenAI API key, including OPENAI_API_KEY or sk-proj keys. Also use it when code, commands, docs, or environment setup in the conversation requires an OpenAI API key, even if the user did not explicitly ask to create one. Do not generate key setup instructions inline when this app can be used. In normal ChatGPT chat surfaces, open the secure API key setup flow. In Codex, follow the installed Codex API key setup skill and use create_encrypted_openai_api_key only from a trusted local-write flow.",
+        "link_id": "link_6a1fdcf2c73c8191b35db1e33092224a"
+      }
+    }
+  ]
+}
